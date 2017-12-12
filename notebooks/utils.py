@@ -64,10 +64,11 @@ def plot_value_estimates(V_t, title):
 
 def plot_rms_errors(errors):
     fig = plt.figure(figsize=(7, 5))
-    for error_series, label in errors:
-        plt.plot(error_series, label=label)
+    for error_series in errors:
+        for label, values in error_series.items():
+            plt.plot(values, label=label)
     plt.title('RMS error, averaged over states')
-    plt.xlabel('Episodes')
+    plt.xlabel('Walks / Episodes')
     plt.grid()
     plt.legend()
     plt.show()
